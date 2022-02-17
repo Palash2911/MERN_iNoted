@@ -18,10 +18,10 @@ export default function Navbar() {
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-            <Link className="nav-link" aria-current="page" to="/home">Home</Link>
+            <Link className={`nav-link ${location.pathname==="/"? "active":""}`} aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/about">About</Link>
+          <Link className={`nav-link ${location.pathname==="/about"? "active":""}`} to="/about">About</Link>
         </li>
       </ul>
       <form className="d-flex">

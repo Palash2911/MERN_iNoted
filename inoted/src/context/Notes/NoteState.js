@@ -21,7 +21,7 @@ const NoteState = (props)=>{
 
     // Boilerplate whenever using context
     return (
-        <Notecontext.Provider value={{}}>
+        <Notecontext.Provider>
             {props.children}
         </Notecontext.Provider>
     )
