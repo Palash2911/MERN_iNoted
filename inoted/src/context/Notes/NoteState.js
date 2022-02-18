@@ -9,7 +9,7 @@ const NoteState = (props)=>{
           "_id": "620cefd0de12518b9fe440a7",
           "user": "6208e77b518960681c418a5f",
           "title": "My WakeUp Alarm",
-          "description": "Wake Up Early My Bird",
+          "description": "Wake Up Early My Buddy",
           "tag": "Personel",
           "date": "2022-02-16T12:36:32.936Z",
           "__v": 0
@@ -27,7 +27,7 @@ const NoteState = (props)=>{
 
     const [notes, setnotes] = useState(inotes)
     // Boilerplate whenever using context
-    
+
     return (
         <Notecontext.Provider value={{notes, setnotes}}>
             {props.children}
