@@ -6,7 +6,7 @@ const NoteState = (props)=>{
 
     const inotes = [
         {
-          "_id": "620cefd0de12518b9fe440a7",
+          "_id": "620cefd0de12518b96fe440a7a",
           "user": "6208e77b518960681c418a5f",
           "title": "Alarm",
           "description": "Wake Up Early My Buddy",
@@ -15,7 +15,7 @@ const NoteState = (props)=>{
           "__v": 0
         },
         {
-          "_id": "620cf35ffcc1f4b0542565e3",
+          "_id": "620cf35ffcc13f4b0542565de3",
           "user": "6208e77b518960681c418a5f",
           "title": "My WakeUp Call",
           "description": "UTH JAA BSDK",
@@ -45,10 +45,11 @@ const NoteState = (props)=>{
     }
     // Delete a Note
     const deletenote=(id)=>{
-
+      const newNote = notes.filter((note)=>{return note._id!==id})
+      setNotes(newNote)
     }
     // Update a Note
-    const updatenote=(id)=>{
+    const updatenote=(id, title, description, tag)=>{
       
     }
 
