@@ -8,7 +8,7 @@ const NoteState = (props)=>{
         {
           "_id": "620cefd0de12518b9fe440a7",
           "user": "6208e77b518960681c418a5f",
-          "title": "My WakeUp Alarm",
+          "title": "Alarm",
           "description": "Wake Up Early My Buddy",
           "tag": "Personel",
           "date": "2022-02-16T12:36:32.936Z",
@@ -25,11 +25,36 @@ const NoteState = (props)=>{
         }
       ]
 
-    const [notes, setnotes] = useState(inotes)
-    // Boilerplate whenever using context
+    const [notes, setNotes] = useState(inotes)
 
+    //Add a Note
+    const addnote=(title, description, tag)=>{
+      const note=[
+        {
+          "_id": "620cf35ffcc1f4b0542565ee3",
+          "user": "6208e77b518960681c418a5f",
+          "title": title,
+          "description": description,
+          "tag": tag,
+          "date": "2022-02-16T12:51:43.156Z",
+          "__v": 0
+        }
+      ];
+      console.log(note)
+        setNotes(notes.concat(note))
+    }
+    // Delete a Note
+    const deletenote=(id)=>{
+
+    }
+    // Update a Note
+    const updatenote=(id)=>{
+      
+    }
+
+    // Boilerplate whenever using context
     return (
-        <Notecontext.Provider value={{notes, setnotes}}>
+        <Notecontext.Provider value={{notes, addnote, deletenote, updatenote}}>
             {props.children}
         </Notecontext.Provider>
     )
