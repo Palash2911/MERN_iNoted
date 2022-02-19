@@ -6,7 +6,7 @@ import Addnote from './Addnote'
 const Notes = ()=>{
 
   const cntx = useContext(notecontext);
-  const {notes, fetchallnotes} = cntx;
+  const {notes, fetchallnotes, updatenote} = cntx;
   useEffect(() => {
     fetchallnotes()
     //eslint-disable-next-line
@@ -15,14 +15,17 @@ const Notes = ()=>{
   const [note, setNote] = useState({utitle: "", udescription: "", utag: "default"});
   // This is a Hook use to select a single element
   const ref = useRef(null)
+  const refclose = useRef(null)
   // UPDATING NOTE FROM HERE
   const updateNote=(currentnote)=>{
       ref.current.click()
-      setNote({utitle: currentnote.title, udescription: currentnote.description, utag: currentnote.tag})
+      setNote({id: currentnote._id, utitle: currentnote.title, udescription: currentnote.description, utag: currentnote.tag})
   }
   //updating FORM
   const handleclick=(e)=>{
       e.preventDefault()
+      updatenote(note.id, note.utitle, note.udescription, note.utag)
+      refclose.current.click()
   }
   const onChange=(e)=>{
       setNote({...note, [e.target.name]: e.target.value})
@@ -67,7 +70,7 @@ const Notes = ()=>{
             </form>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" ref={refclose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary" onClick={handleclick}>Update Note</button>
             </div>
           </div>

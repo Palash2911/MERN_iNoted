@@ -69,23 +69,25 @@ const NoteState = (props)=>{
       const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json',
-          "auth-token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIwOGU3N2I1MTg5NjA2ODFjNDE4YTVmIn0sImlhdCI6MTY0NDc1MzUwM30.V22Z4TwCQU_-q4rctJwSk4R8-KGAxBL6iP-TCi8m4eQ' 
+          "auth-token": 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIwOGU3N2I1MTg5NjA2ODFjNDE4YTVmIn0sImlhdCI6MTY0NDc1MzUwM30.V22Z4TwCQU_-q4rctJwSk4R8-KGAxBL6iP-TCi8m4eQ',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({title, description, tag})
       });
-      const json = await response.json();
-
+      
+      let updatednote = JSON.parse(JSON.stringify(notes))
       //Find and update Note
-      for (let index = 0; index < array.length; index++) {
-        const element = notes[index];
+      for (let index = 0; index < updatednote.length; index++) {
+        const element = updatednote[index];
         if(element._id===id)
         {
-          element.title=title;
-          element.description=description;
-          element.tag=tag;
+          updatednote[index].title=title;
+          updatednote[index].description=description;
+          updatednote[index].tag=tag;
+          break;
         }    
       }
+      setNotes(updatednote)
     }
 
     // Boilerplate whenever using context
