@@ -65,19 +65,17 @@ const Notes = ()=>{
                     <option value="Finance">FINANCE</option>
                   </select>
               </div>
-              
-              <button type="submit" className="btn btn-primary" onClick={handleclick}>Create Note</button>
             </form>
             </div>
             <div className="modal-footer">
               <button type="button" ref={refclose} className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" onClick={handleclick}>Update Note</button>
+              <button disabled={note.utitle.length<5 || note.udescription.length<5} type="button" className="btn btn-primary" onClick={handleclick}>Update Note</button>
             </div>
           </div>
         </div>
       </div>
       <div className="row my-3">
-          <h2>Your Notes</h2>
+          <h2>Your Notes{notes.length===0 && ' -  No Notes To Display'}</h2>
           {notes.map((note)=>{
               return <Noteitem key={note._id} updateNote={updateNote} note={note}/>;
           })}
