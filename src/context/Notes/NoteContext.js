@@ -1,4 +1,4 @@
-import { Context, createContext } from "react";
+import { createContext } from "react";
 
 const notecontext = createContext();
 

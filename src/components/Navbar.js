@@ -38,7 +38,7 @@ export default function Navbar(props) {
           <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
           <Link className="btn btn-primary mx-1" to="/signup" role="button">Sign-Up</Link>
       </form>: <form className="d-flex">
-          <button className="btn btn-primary mx-2" onClick={logoutbtn} role="button">Log Out</button>
+          <button className="btn btn-primary mx-2" onClick={logoutbtn}>Log Out</button>
       </form>}
     </div>
   </div>

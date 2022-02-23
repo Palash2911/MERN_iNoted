@@ -1,4 +1,3 @@
-import react from 'react';
 import Notecontext from './NoteContext';
 import { useState } from 'react';
 
@@ -46,6 +45,9 @@ const NoteState = (props)=>{
           'Content-Type': 'application/json'
         },
       });
+      const json = await response.json();
+      console.log(json);
+      
       const newNote = notes.filter((note)=>{return note._id!==id})
       setNotes(newNote)
     }
@@ -61,6 +63,9 @@ const NoteState = (props)=>{
         },
         body: JSON.stringify({title, description, tag})
       });
+      const json = await response.json();
+      console.log(json);
+
       
       let updatednote = JSON.parse(JSON.stringify(notes))
       //Find and update Note
