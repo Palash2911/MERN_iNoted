@@ -10,7 +10,6 @@ export default function AllNotes(props) {
   const cntx = useContext(notecontext);
   const {notes, fetchallnotes, updatenote} = cntx;
   useEffect(() => {
-    console.log(localStorage.getItem('token'))
     if(localStorage.getItem('token'))
     {
       fetchallnotes()
