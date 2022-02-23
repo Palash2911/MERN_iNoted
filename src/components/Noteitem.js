@@ -13,7 +13,7 @@ const Noteitem = (props) => {
             <div className="d-flex align-items-center justify-content-between">
                 <h5 className="card-title my-2">{note.title}</h5>
                 <div className="icons d-flex justify-content-end">
-                  <i className="fas fa-solid fa-trash mx-4" onClick={()=>{deletenote(note._id), props.showAlert("Note Deleted !", "warning")}}></i>
+                  <i className="fas fa-solid fa-trash mx-4" onClick={()=>{deletenote(note._id); props.showAlert("Note Deleted !", "warning");}}></i>
                   <i className="fas fa-solid fa-pen mx-1" onClick={()=>{updateNote(note)}}></i>
                 </div>
             </div>
