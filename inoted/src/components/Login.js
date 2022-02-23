@@ -38,15 +38,14 @@ const Login = (props) => {
     }
 
   return (
-    <div>
-      <form onSubmit={handlesubmit}>
+    <div className="container my-3 d-flex flex-column align-items-center">
+      <h2>Login To Continue </h2>
+      <form onSubmit={handlesubmit} className="my-4" style={{width: '50%'}}>
         <div className="mb-3">
-            <label htlmfor="email" className="form-label">Email address</label>
-            <input type="email" className="form-control" value={credentials.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" required/>
+            <input type="email" className="form-control" value={credentials.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" placeholder='Enter Email-Id' required/>
         </div>
-        <div className="mb-3">
-            <label htlmfor="password" className="form-label">Password</label>
-            <input type="password" className="form-control" onChange={onChange} value={credentials.password} id="password" name="password" required/>
+        <div className="mb-3 my-4">
+            <input type="password" className="form-control" onChange={onChange} value={credentials.password} id="password" name="password" placeholder='Enter Password' required/>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button> 
         </form>

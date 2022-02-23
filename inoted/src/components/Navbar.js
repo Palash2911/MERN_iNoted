@@ -1,12 +1,22 @@
 import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar(props) {
+
+  let histo = useNavigate();
+
   let location = useLocation();
   useEffect(() =>{
     console.log(location);
   }, [location]);
+
+  const logoutbtn = ()=>{
+      localStorage.removeItem('token');
+      histo("/login")
+      props.showAlert("Logout Successfully", "success")
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,13 +31,15 @@ export default function Navbar() {
             <Link className={`nav-link ${location.pathname==="/"? "active":""}`} aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className={`nav-link ${location.pathname==="/about"? "active":""}`} to="/about">About</Link>
+          <Link className={`nav-link ${location.pathname==="/allnotes"? "active":""}`} to="/allnotes">Your Notes</Link>
         </li>
       </ul>
-      <form className="d-flex">
+      {!localStorage.getItem('token')?<form className="d-flex">
           <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
           <Link className="btn btn-primary mx-1" to="/signup" role="button">Sign-Up</Link>
-      </form>
+      </form>: <form className="d-flex">
+          <button className="btn btn-primary mx-2" onClick={logoutbtn} role="button">Log Out</button>
+      </form>}
     </div>
   </div>
 </nav>

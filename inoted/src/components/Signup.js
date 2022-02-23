@@ -28,6 +28,7 @@ const Signup = (props) => {
       if(jsons.success)
       {
           // Save Auth Token and Redirect
+          localStorage.removeItem('token');
           localStorage.setItem('token', jsons.authtoken);
           histo("/")
           props.showAlert("Account Created Successfully", "success")
@@ -39,19 +40,17 @@ const Signup = (props) => {
     }
 
   return (
-    <div className='container'>
-        <form onSubmit={handlesubmit}>
-          <div className="mb-3">
-              <label htlmfor="name" className="form-label">Enter Name</label>
-              <input type="text" className="form-control" id="name" name="name" onChange={onChange} aria-describedby="emailHelp" required/>
+    <div className='container my-3 d-flex flex-column align-items-center'>
+      <h2>Signup To iNoted</h2>
+        <form onSubmit={handlesubmit} className="my-4" style={{width: '50%'}}>
+          <div className="mb-3 my-4">
+              <input type="text" className="form-control" id="name" name="name" onChange={onChange} aria-describedby="emailHelp" placeholder='Enter Your Name' required/>
           </div>
-          <div className="mb-3">
-              <label htlmfor="email" className="form-label">Enter Email</label>
-              <input type="email" className="form-control" id="email" name="email" onChange={onChange} aria-describedby="emailHelp" required/>
+          <div className="mb-3 my-4">
+              <input type="email" className="form-control" id="email" name="email" onChange={onChange} aria-describedby="emailHelp" placeholder='Enter Your Email-ID' required/>
           </div>
-          <div className="mb-3">
-              <label htlmfor="password" className="form-label">Enter Password</label>
-              <input type="password" className="form-control"id="password" name="password" onChange={onChange} required minLength={5}/>
+          <div className="mb-3 my-4">
+              <input type="password" className="form-control"id="password" name="password" minLength={8} placeholder='Enter Password' onChange={onChange} required minLength={5}/>
           </div>
             <button type="submit" className="btn btn-primary">Submit</button> 
         </form>
