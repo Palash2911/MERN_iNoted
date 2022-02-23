@@ -3,8 +3,9 @@ import notecontext from "../context/Notes/NoteContext"
 import Noteitem from './Noteitem';
 import Addnote from './Addnote'
 
-const Notes = ()=>{
+const Notes = (props)=>{
 
+  const {showAlert} = props;
   const cntx = useContext(notecontext);
   const {notes, fetchallnotes, updatenote} = cntx;
   useEffect(() => {
@@ -26,6 +27,7 @@ const Notes = ()=>{
       e.preventDefault()
       updatenote(note.id, note.utitle, note.udescription, note.utag)
       refclose.current.click()
+      props.showAlert("Note Updated Successfully !!", "success")
   }
   const onChange=(e)=>{
       setNote({...note, [e.target.name]: e.target.value})
@@ -34,7 +36,7 @@ const Notes = ()=>{
 
   return (
     <>
-      <Addnote/>
+      <Addnote showAlert={showAlert}/>
       <button type="button" ref={ref} className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Launch demo modal
       </button>
@@ -77,7 +79,7 @@ const Notes = ()=>{
       <div className="row my-3">
           <h2>Your Notes{notes.length===0 && ' -  No Notes To Display'}</h2>
           {notes.map((note)=>{
-              return <Noteitem key={note._id} updateNote={updateNote} note={note}/>;
+              return <Noteitem key={note._id} updateNote={updateNote} note={note} showAlert={showAlert}/>;
           })}
       </div>
     </>
