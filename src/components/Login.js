@@ -14,7 +14,7 @@ const Login = (props) => {
 
     const handlesubmit = async (e)=>{
         e.preventDefault();
-        const response = await fetch(`https://inoted.netlify.app/login`, {
+        const response = await fetch(`https://inoted.netlify.app/api/authen/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

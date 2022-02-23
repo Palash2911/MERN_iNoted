@@ -15,7 +15,7 @@ const Signup = (props) => {
 
     const handlesubmit = async (e)=>{
       e.preventDefault();
-      const response = await fetch(`https://inoted.netlify.app/signup`, {
+      const response = await fetch(`https://inoted.netlify.app/api/authen/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const Signup = (props) => {
               <input type="email" className="form-control" id="email" name="email" onChange={onChange} aria-describedby="emailHelp" placeholder='Enter Your Email-ID' required/>
           </div>
           <div className="mb-3 my-4">
-              <input type="password" className="form-control"id="password" name="password" minLength={8} placeholder='Enter Password' onChange={onChange} required/>
+              <input type="password" className="form-control"id="password" name="password" minLength={8} placeholder='Enter Password' onChange={onChange} required minLength={5}/>
           </div>
             <button type="submit" className="btn btn-primary">Submit</button> 
         </form>

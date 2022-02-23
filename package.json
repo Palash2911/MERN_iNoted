@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "both": "concurrently \"npm run start\" \"cd C:/Users/Palash/Gopspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/WEB DEV/React JS/MERN_Backend_iNoted/backend_iNoted && nodemon /index.js\""
+    "both": "concurrently \"npm run start\" \"cd C:/Users/Palash/Gopspeed Dropbox/Palash Rambhia/My PC (LAPTOP-42U74MT7)/Desktop/WEB DEV/React JS/MERN_Backend_iNoted && nodemon /index.js\""
   },
   "eslintConfig": {
     "extends": [

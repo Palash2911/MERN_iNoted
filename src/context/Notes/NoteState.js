@@ -1,3 +1,4 @@
+import react from 'react';
 import Notecontext from './NoteContext';
 import { useState } from 'react';
 
@@ -10,7 +11,7 @@ const NoteState = (props)=>{
     //FETCH all Notes
     const fetchallnotes= async()=>{
       // API CALL 
-      const response = await fetch(`${host}/fetchnotes`, {
+      const response = await fetch(`${host}/api/notes/fetchnotes`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +25,7 @@ const NoteState = (props)=>{
     //Add a Note
     const addnote= async(title, description, tag)=>{
       // API CALL 
-      const response = await fetch(`${host}/addnotes`, {
+      const response = await fetch(`${host}/api/notes/addnotes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,16 +39,13 @@ const NoteState = (props)=>{
 
     // Delete a Note
     const deletenote= async(id)=>{// API CALL 
-      const response = await fetch(`${host}/deletenote/${id}`, {
+      const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
         method: 'DELETE',
         headers: {
           "auth-token": localStorage.getItem('token'),
           'Content-Type': 'application/json'
         },
       });
-      const json = await response.json();
-      console.log(json);
-      
       const newNote = notes.filter((note)=>{return note._id!==id})
       setNotes(newNote)
     }
@@ -55,7 +53,7 @@ const NoteState = (props)=>{
     // Update a Note
     const updatenote= async(id, title, description, tag)=>{
       // API CALL 
-      const response = await fetch(`${host}/updatenote/${id}`, {
+      const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
         method: 'PUT',
         headers: {
           "auth-token": localStorage.getItem('token'),
@@ -63,9 +61,6 @@ const NoteState = (props)=>{
         },
         body: JSON.stringify({title, description, tag})
       });
-      const json = await response.json();
-      console.log(json);
-
       
       let updatednote = JSON.parse(JSON.stringify(notes))
       //Find and update Note
