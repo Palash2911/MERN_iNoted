@@ -3,8 +3,7 @@ import Addnote from './Addnote'
 import { useNavigate } from 'react-router-dom'
 
 const Notes = (props)=>{
-
-  const {showAlert} = props
+  
   let histo = useNavigate();
   useEffect(() => {
     if(localStorage.getItem('token'))
