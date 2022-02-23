@@ -15,7 +15,7 @@ const Signup = (props) => {
 
     const handlesubmit = async (e)=>{
       e.preventDefault();
-      const response = await fetch(`https://inoted.netlify.app/api/authen/signup`, {
+      const response = await fetch(`https://mern-inoted.herokuapp.com/api/authen/signup`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
