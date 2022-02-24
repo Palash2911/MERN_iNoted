@@ -14,7 +14,7 @@ const Login = (props) => {
 
     const handlesubmit = async (e)=>{
         e.preventDefault();
-        const response = await fetch(`https://mern-inoted.herokuapp.com/api/authen/login`, {
+        const response = await fetch(`https://mern-backend-inoted.herokuapp.com/api/authen/login`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

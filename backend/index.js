@@ -6,7 +6,7 @@ connectToMongo();
 
 const app = express()
 // because react app will run on 3000
-const port = 5000
+const port = 3000
 
 app.use(cors())
 app.use(express.json())
