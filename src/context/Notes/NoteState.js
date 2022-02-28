@@ -2,7 +2,7 @@ import Notecontext from './NoteContext';
 import { useState } from 'react';
 
 const NoteState = (props)=>{
-    const host = "https://mern-backend-inoted.herokuapp.com"
+    const host = "http://localhost:3000"
     const inotes = []
 
     const [notes, setNotes] = useState(inotes)
