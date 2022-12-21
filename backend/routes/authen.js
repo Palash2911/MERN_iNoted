@@ -9,7 +9,7 @@ const fetchuser = require('../middleware/fetchuser')
 
 //Route 1: Create a User using : POST "/api/authen/signup". Doesn't Require Auth
 router.post('/signup',[
-        body('email', 'Enter a Valid Email ').isEmail(),
+        body('email', 'Enter a Valid Email').isEmail(),
         body('name', 'Enter a Valid Name').isLength({ min: 3 }),
         body('password', 'PassWord length minimum 8').isLength({ min: 8 }),
 ], async (req, res)=>{
@@ -20,7 +20,7 @@ router.post('/signup',[
         // Error - Validations - If Errors find and return them
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
+                return res.status(400).json({ errors: errors.array() });
         }
 
         // Securing Password - Hashing
@@ -53,7 +53,7 @@ router.post('/signup',[
                 res.json({success, authtoken})
 
         } catch (error) {
-                    console.error(error.message);  
+                    console.error("Hello World " + error.message);  
                     res.status(500).send(success, "Internal Error Occurred");   
         }
 })

@@ -1,8 +1,8 @@
 import Notecontext from './NoteContext';
 import { useState } from 'react';
+import { API } from '../../config.js' 
 
 const NoteState = (props)=>{
-    const host = "http://localhost:3000"
     const inotes = []
 
     const [notes, setNotes] = useState(inotes)
@@ -10,7 +10,7 @@ const NoteState = (props)=>{
     //FETCH all Notes
     const fetchallnotes= async()=>{
       // API CALL 
-      const response = await fetch(`${host}/api/notes/fetchnotes`, {
+      const response = await fetch(`${API}/notes/fetchnotes`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const NoteState = (props)=>{
     //Add a Note
     const addnote= async(title, description, tag)=>{
       // API CALL 
-      const response = await fetch(`${host}/api/notes/addnotes`, {
+      const response = await fetch(`${API}/notes/addnotes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const NoteState = (props)=>{
 
     // Delete a Note
     const deletenote= async(id)=>{// API CALL 
-      const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      const response = await fetch(`${API}/notes/deletenote/${id}`, {
         method: 'DELETE',
         headers: {
           "auth-token": localStorage.getItem('token'),
@@ -55,7 +55,7 @@ const NoteState = (props)=>{
     // Update a Note
     const updatenote= async(id, title, description, tag)=>{
       // API CALL 
-      const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      const response = await fetch(`${API}/notes/updatenote/${id}`, {
         method: 'PUT',
         headers: {
           "auth-token": localStorage.getItem('token'),
