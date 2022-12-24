@@ -53,7 +53,6 @@ router.post('/signup',[
                 res.json({success, authtoken})
 
         } catch (error) {
-                    console.error("Hello World " + error.message);  
                     res.status(500).send(success, "Internal Error Occurred");   
         }
 })
